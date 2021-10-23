@@ -1,19 +1,14 @@
--- Xmobar (http://projects.haskell.org/xmobar/)
--- This is the default xmobar configuration for DTOS.
--- This config is packaged in the DTOS repo as dtos-xmobar
--- Dependencies: otf-font-awesome ttf-mononoki ttf-ubuntu-font-family trayer
--- Also depends on scripts from dtos-local-bin from the dtos-core-repo.
-
+--      Made By bigbeastishank
+--
+--      Youtube: https://www.youtube.com/channel/UCw6lNThNWxwz1cz5rvR1Rdw
+--      Instagram: https://instagram.com/opishank
+--      Twitter: https://twitter.com/opishank
+--      Github: https://github.com/bigbeastishank
 Config { font            = "xft:Arch:weight=bold:pixelsize=12.5:antialias=true:hinting=true"
        , additionalFonts = [ "xft:Mononoki:pixelsize=11:antialias=true:hinting=true"
                            ]
        , bgColor      = "#282c34"
        , fgColor      = "#ff6c6b"
-       -- Position TopSize and BottomSize take 3 arguments:
-       --   an alignment parameter (L/R/C) for Left, Right or Center.
-       --   an integer for the percentage width, so 100 would be 100%.
-       --   an integer for the minimum pixel height for xmobar, so 24 would force a height of at least 24 pixels.
-       --   NOTE: The height should be the same as the trayer (system tray) height.
        , position       = TopSize L 100 24
        , lowerOnStart = True
        , hideOnStart  = False
@@ -22,22 +17,22 @@ Config { font            = "xft:Arch:weight=bold:pixelsize=12.5:antialias=true:h
        , iconRoot     = ".xmonad/xpm/"  -- default: "."
        , commands = [
                         -- Cpu usage in percent
-                      Run Cpu ["-t", "<icon=cpu_20.xpm/> CPU: (<total>%)","-H","50","--high","red"] 20
+                      Run Cpu ["-t", "<icon=cpu_20.xpm/> CPU: (<total>%)","-H","50","--high","red"] 10
                         -- Ram used number and percent
                     , Run Memory ["-t", "<icon=memory-icon_20.xpm/> Memory: <used>M (<usedratio>%)"] 20
                         -- Disk space free
                     , Run DiskU [("/", "<icon=harddisk-icon_20.xpm/> HDD: <free> free")] [] 60
                         -- Uptime
-                    , Run Uptime ["-t", "<icon=net_up_20.xpm/> Uptime: <days>d <hours>h"] 360
+                    , Run Uptime ["-t", "<icon=net_up_20.xpm/> Uptime: <hours>h <minutes>m"] 360
                         -- Battery
                     , Run BatteryP ["BAT0"] ["-t", "Battery (<left>%)"] 360
                         -- Time and date
-                    , Run Date "<icon=calendar-clock-icon_20.xpm/> %b %d %Y - (%I:%M:%p) " "date" 50
+                    , Run Date "<icon=calendar-clock-icon_20.xpm/> %b %d %Y - (%I:%M:%S:%p)" "date" 10
                         -- Prints out the left side items such as workspaces, layout, etc.
                     , Run UnsafeStdinReader
                     ]
 
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <icon=haskell_20.xpm/>   <fc=#666666>|</fc> %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=2 color=#51afef><fc=#51afef></fc></box>    <box type=Bottom width=2 mb=2 color=#ecbe7b><fc=#ecbe7b><action=`alacritty -e htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#ff6c6b><fc=#ff6c6b><action=`alacritty -e htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#a9a1e1><fc=#a9a1e1><action=`alacritty -e htop`>%disku%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#98be65><fc=#98be65><action=`alacritty -e htop`>%uptime%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#da8548><fc=#da8548><action=`alacritty -e sudo pacman -Syu`>%battery%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#46d9ff><fc=#46d9ff><action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(dt/year-calendar))'`>%date%</action></fc></box>  "
+       , template = " <icon=haskell_20.xpm/>   <fc=#666666>|</fc> %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=2 color=#51afef><fc=#51afef></fc></box>    <box type=Bottom width=2 mb=2 color=#ecbe7b><fc=#ecbe7b><action=`alacritty -e htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#ff6c6b><fc=#ff6c6b><action=`alacritty -e htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#a9a1e1><fc=#a9a1e1>%disku%</fc></box>    <box type=Bottom width=2 mb=2 color=#98be65><fc=#98be65>%uptime%</fc></box>    <box type=Bottom width=2 mb=2 color=#da8548><fc=#da8548>%battery%</fc></box>    <box type=Bottom width=2 mb=2 color=#46d9ff><fc=#46d9ff>%date%</fc></box>     "
        }
