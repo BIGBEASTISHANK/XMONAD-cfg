@@ -19,15 +19,15 @@ Config { font            = "xft:Arch:weight=bold:pixelsize=12.5:antialias=true:h
                         -- Cpu usage in percent
                       Run Cpu ["-t", "<icon=cpu_20.xpm/> CPU: (<total>%)","-H","50","--high","red"] 10
                         -- Ram used number and percent
-                    , Run Memory ["-t", "<icon=memory-icon_20.xpm/> Memory: <used>M (<usedratio>%)"] 20
+                    , Run Memory ["-t", "<icon=memory-icon_20.xpm/> Memory: <used>M (<usedratio>%)"] 10
                         -- Disk space free
                     , Run DiskU [("/", "<icon=harddisk-icon_20.xpm/> HDD: <free> free")] [] 60
                         -- Uptime
-                    , Run Uptime ["-t", "<icon=net_up_20.xpm/> Uptime: <hours>h <minutes>m"] 360
+                    , Run Uptime ["-t", "<icon=net_up_20.xpm/> Uptime: <hours>h <minutes>m <seconds>s"] 1
                         -- Battery
-                    , Run BatteryP ["BAT0"] ["-t", "Battery (<left>%)"] 360
+                    , Run BatteryP ["BAT0"] ["-t", "Battery (<left>%)"] 1
                         -- Time and date
-                    , Run Date "<icon=calendar-clock-icon_20.xpm/> %b %d %Y - (%I:%M:%S:%p)" "date" 10
+                    , Run Date "<icon=calendar-clock-icon_20.xpm/> %b %d %Y - (%I:%M:%S:%p)" "date" 1
                         -- Prints out the left side items such as workspaces, layout, etc.
                     , Run UnsafeStdinReader
                     ]
