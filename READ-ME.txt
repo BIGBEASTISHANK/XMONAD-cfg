@@ -1,5 +1,5 @@
 #First use chmod and give permission to package-install.sh
-chmod -x ./package-install.sh
+chmod +x ./package-install.sh
 
 #Now run it
 ./package-install.sh
